@@ -77,7 +77,7 @@
 .template-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px; /* 같은 라인에 위치한 template button 간의 좌우 간격을 30px로 설정 */
+  gap: 10px; /* 같은 라인에 위치한 template button 간의 좌우 간격을 30px로 설정 */
   justify-content: center;
 }
 
