@@ -1,24 +1,33 @@
 const express = require('express');
-const path = require('path');
+const bodyParser = require('body-parser');
+const pptxCombiner = require('./pptxCombiner');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
-app.use(express.json());
+const PORT = 5000;
 
-app.get('/api/templates/:templateName', (req, res) => {
-  const templateName = req.params.templateName;
-  const templatePath = path.join(__dirname, '..', 'public', 'templates', templateName);
+app.use(bodyParser.json());
 
-  fs.readFile(templatePath, 'utf8', (err, data) => {
-    if (err) {
-      return res.status(500).json({ error: 'Error reading template file' });
+app.post('/merge', async (req, res) => {
+    const { files } = req.body;
+
+    try {
+        const mergedPptx = await pptxCombiner(files);
+
+        const outputPath = path.join(__dirname, 'merged.pptx');
+        await mergedPptx.write(outputPath);
+
+        const pptxBuffer = fs.readFileSync(outputPath);
+        res.setHeader('Content-Disposition', 'attachment; filename=merged.pptx');
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.presentationml.presentation');
+        res.send(pptxBuffer);
+    } catch (error) {
+        console.error('Error merging PPTX files:', error);
+        res.status(500).send('Error merging PPTX files');
     }
-    res.json({ content: data });
-  });
 });
 
-const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
-
