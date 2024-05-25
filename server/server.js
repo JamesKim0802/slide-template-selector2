@@ -1,14 +1,24 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
+
 const app = express();
-const port = 5000;
+app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.get('/api/templates/:templateName', (req, res) => {
+  const templateName = req.params.templateName;
+  const templatePath = path.join(__dirname, '..', 'public', 'templates', templateName);
 
-app.get('/templates/templates.json', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'templates', 'templates.json'));
+  fs.readFile(templatePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error reading template file' });
+    }
+    res.json({ content: data });
+  });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
+
