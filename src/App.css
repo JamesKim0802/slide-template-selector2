@@ -4,13 +4,59 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 .App {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.toolbar {
+  width: 800px;
+  background-color: white;
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  position: relative;
+}
+
+.toolbar-hidden .toolbar {
+  transform: translateX(-100%);
+}
+
+.toggle-button {
+  position: absolute;
+  top: 50%;
+  left: 800px;
+  transform: translateY(-50%);
+  background-color: #ffccff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  transition: left 0.3s ease;
+}
+
+.App.toolbar-hidden .toggle-button {
+  left: 0;
+}
+
+.main-content {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: margin-left 0.3s ease, transform 0.3s ease;
+  margin-left: 0;
+}
+
+.App.toolbar-hidden .main-content {
+  margin-left: 0;
+  align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background-color: #f0f0f0;
 }
 
 .header {
@@ -65,26 +111,25 @@
 }
 
 .select-button {
-  margin-bottom: 140px; /* 기존 간격의 2배로 설정 */
+  margin-bottom: 40px;
 }
 
 .template-buttons-group {
   display: flex;
-  flex-direction: column;
-  gap: 100px; /* 그룹 간의 간격을 100px로 설정 */
-}
-
-.template-buttons {
-  display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* 같은 라인에 위치한 template button 간의 좌우 간격을 30px로 설정 */
+  gap: 30px;
   justify-content: center;
 }
 
 .template-button {
   border: 1px solid #ccc;
+<<<<<<< HEAD
   width: 400px;
   height: 400px;
+=======
+  width: 350px;
+  height: 350px;
+>>>>>>> c39eb5c (Add template selection and merge functionality)
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -116,7 +161,8 @@
 .white-buttons {
   display: flex;
   gap: 10px;
-  margin: 20px 0; /* white-buttons 위아래 간격을 동일하게 20px로 설정 */
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .white-button {
@@ -150,26 +196,34 @@
 }
 
 .like-button {
-  background-color: #ffffe0; /* 연한 노란색 */
+  background-color: #ffffe0;
   border: 1px solid #ccc;
   padding: 10px 20px;
   margin-top: 10px;
   cursor: pointer;
-  border-radius: 10px; /* 모서리를 둥글게 */
-  position: absolute;
-  bottom: -40px; /* template-button 바로 아래에 위치 */
+  border-radius: 10px;
+  position: relative;
 }
 
-/* 검은색 점선 */
 .dotted-line {
   border-top: 1px dashed black;
   width: 100%;
-  margin: 35px 0; /* select 버튼과 template-buttons 간 간격의 중간에 위치 */
+  margin: 100px 0;
 }
 
-/* 검은색 실선 */
 .solid-line {
   border-top: 1px solid black;
-  width: calc(200px * 5 + 40px); /* white button의 총 너비 + 간격을 포함한 너비 */
-  margin: 20px 0; /* white-buttons 위아래 간격을 동일하게 20px로 설정 */
+  width: calc(200px * 5 + 40px);
+  margin: 20px 0;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dropdown {
+  width: 200px;
+  text-align: center;
 }
