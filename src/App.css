@@ -123,11 +123,8 @@ body {
 
 .template-button {
   border: 1px solid #ccc;
-  width: 400px;
-  height: 400px;
   width: 350px;
   height: 350px;
-  c39eb5c (Add template selection and merge functionality)
   text-align: center;
   display: flex;
   flex-direction: column;
