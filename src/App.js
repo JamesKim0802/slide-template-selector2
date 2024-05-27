@@ -37,7 +37,7 @@ function App() {
   const handleMergeTemplates = async () => {
     try {
       const filesToMerge = whiteButtons.filter(file => file !== null);
-      console.log('Files to merge:', filesToMerge); // 로그 추가
+      console.log('Files to merge:', filesToMerge);
 
       const response = await axios.post('http://localhost:5000/merge', { files: filesToMerge }, {
         responseType: 'blob'
@@ -50,7 +50,7 @@ function App() {
       document.body.appendChild(link);
       link.click();
     } catch (error) {
-      console.error('Error merging templates:', error); // 오류 로그 추가
+      console.error('Error merging templates:', error);
     }
   };
 
@@ -66,7 +66,7 @@ function App() {
       if (emptyIndex !== -1) {
         newWhiteButtons[emptyIndex] = selectedTemplate.file;
         setWhiteButtons(newWhiteButtons);
-        setSelectedTemplate(null); // Clear the preview box
+        setSelectedTemplate(null);
       }
     }
   };
