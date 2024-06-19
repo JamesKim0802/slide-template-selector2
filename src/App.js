@@ -7,7 +7,7 @@ import axios from 'axios';
 function App() {
   const [templates, setTemplates] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('Total');
+  const [selectedCategory, setSelectedCategory] = useState('표지');
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [showCategories, setShowCategories] = useState(false);
   const [whiteButtons, setWhiteButtons] = useState([null, null, null, null, null]);
@@ -37,7 +37,7 @@ function App() {
   const handleMergeTemplates = async () => {
     try {
       const filesToMerge = whiteButtons.filter(file => file !== null);
-      console.log('Files to merge:', filesToMerge); // 로그 추가
+      console.log('Files to merge:', filesToMerge);
 
       const response = await axios.post('http://localhost:5000/merge', { files: filesToMerge }, {
         responseType: 'blob'
@@ -50,7 +50,7 @@ function App() {
       document.body.appendChild(link);
       link.click();
     } catch (error) {
-      console.error('Error merging templates:', error); // 오류 로그 추가
+      console.error('Error merging templates:', error);
     }
   };
 
@@ -98,11 +98,11 @@ function App() {
           <>
             <div className="dropdown-container">
               <select className="dropdown" onChange={handleDropdownChange} value={selectedCategory}>
-                <option value="Total">Total</option>
-                <option value="VM">VM</option>
-                <option value="CM">CM</option>
-                <option value="New project">New project</option>
-                <option value="Overhaul">Overhaul</option>
+                <option value="표지">표지</option>
+                <option value="개요">개요</option>
+                <option value="메인장표">메인장표</option>
+                <option value="도식화">도식화</option>
+                <option value="요약">요약</option>
               </select>
             </div>
             <div className="template-buttons-group">
@@ -112,7 +112,7 @@ function App() {
                     <img src={template.file} alt={template.name} />
                   </div>
                   <button className="like-button" onClick={() => handleTemplateSelect(template)}>
-                    like it
+                    Select
                   </button>
                 </div>
               ))}
@@ -130,15 +130,15 @@ function App() {
           {showDropdown && <TemplateCreator onCreate={handleCreateTemplate} />}
           <div className="controls">
             <select onChange={handleDropdownChange}>
-              <option value="Total">Total</option>
-              <option value="VM">VM</option>
-              <option value="CM">CM</option>
-              <option value="New project">New project</option>
-              <option value="Overhaul">Overhaul</option>
+              <option value="표지">표지</option>
+              <option value="개요">개요</option>
+              <option value="메인장표">메인장표</option>
+              <option value="도식화">도식화</option>
+              <option value="요약">요약</option>
             </select>
             {showCategories && (
               <div className="categories">
-                {['Total', 'VM', 'CM', 'New project', 'Overhaul'].map((category) => (
+                {['표지', '개요', '메인장표', '도식화', '요약'].map((category) => (
                   <button key={category} onClick={() => handleCategoryClick(category)}>{category}</button>
                 ))}
               </div>

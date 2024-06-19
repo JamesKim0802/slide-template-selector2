@@ -5,6 +5,9 @@
 }
 
 body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
   overflow-y: scroll;
 }
 
@@ -12,16 +15,17 @@ body {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
-  background-color: #f0f0f0;
-  position: relative;
 }
 
 .toolbar {
-  width: 800px;
-  background-color: white;
+  width: 600px;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
   transition: transform 0.3s ease;
   overflow-y: auto;
   position: relative;
+  padding: 20px;
+  flex-shrink: 0; /* Prevent the toolbar from shrinking */
 }
 
 .toolbar-hidden .toolbar {
@@ -31,13 +35,15 @@ body {
 .toggle-button {
   position: absolute;
   top: 50%;
-  left: 800px;
+  left: 600px; /* Adjusted to match toolbar width */
   transform: translateY(-50%);
-  background-color: #ffccff;
+  background-color: #007bff;
   border: none;
   padding: 10px;
   cursor: pointer;
+  color: white;
   transition: left 0.3s ease;
+  width: 40px; /* Fixed width */
 }
 
 .App.toolbar-hidden .toggle-button {
@@ -46,17 +52,13 @@ body {
 
 .main-content {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 20px;
   transition: margin-left 0.3s ease, transform 0.3s ease;
-  margin-left: 0;
+  margin-left: 100px; /* Adjusted to match toolbar width */
 }
 
 .App.toolbar-hidden .main-content {
   margin-left: 0;
-  align-items: center;
-  justify-content: center;
 }
 
 .header {
@@ -69,23 +71,30 @@ body {
 .top-buttons {
   display: flex;
   justify-content: space-between;
-  width: 300px;
+  width: 100%;
   margin-bottom: 10px;
 }
 
 .controls {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .template-create-button, .create-button, .preview-button, .select-button, .delete-button {
-  background-color: #ffccff;
+  background-color: #007bff;
   border: none;
-  padding: 10px 30px;
-  margin: 10px;
+  padding: 10px 20px;
+  margin: 5px;
   cursor: pointer;
+  color: white;
+  border-radius: 5px;
+}
+
+.template-create-button:hover, .create-button:hover, .preview-button:hover, .select-button:hover, .delete-button:hover {
+  background-color: #0056b3;
 }
 
 .categories {
@@ -97,12 +106,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .preview-box {
-  width: 700px;
-  height: 700px;
-  border: 1px solid black;
+  width: 80%;
+  height: 600px;
+  border: 1px solid #ddd;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -110,27 +120,40 @@ body {
   background-color: white;
 }
 
+.preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .select-button {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .template-buttons-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 10px;
   justify-content: center;
 }
 
 .template-button {
-  border: 1px solid #ccc;
-  width: 350px;
-  height: 350px;
+  border: 1px solid #ddd;
+  width: 250px;
+  height: 250px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.template-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .template-image-container {
@@ -148,31 +171,27 @@ body {
   object-fit: contain;
 }
 
-.preview-box img {
-  max-width: 100%;
-  height: auto;
-}
-
 .white-buttons {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
-  position: relative;
+  width: 100%;
+  justify-content: center;
 }
 
 .white-button {
-  width: 200px;
-  height: 200px;
-  background-color: white;
-  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  cursor: pointer;
 }
 
 .white-button.selected {
-  border: 2px solid blue;
+  border: 2px solid #007bff;
 }
 
 .white-button img {
@@ -181,44 +200,46 @@ body {
   object-fit: contain;
 }
 
-.delete-button {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 10px 30px;
-  margin: 10px;
-  cursor: pointer;
-}
-
 .like-button {
-  background-color: #ffffe0;
-  border: 1px solid #ccc;
-  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
   margin-top: 10px;
   cursor: pointer;
-  border-radius: 10px;
-  position: relative;
+  border-radius: 3px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.dotted-line {
-  border-top: 1px dashed black;
-  width: 100%;
-  margin: 100px 0;
-}
-
-.solid-line {
-  border-top: 1px solid black;
-  width: calc(200px * 5 + 40px);
-  margin: 20px 0;
+.like-button:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .dropdown {
   width: 200px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   text-align: center;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background-color: darkred;
 }

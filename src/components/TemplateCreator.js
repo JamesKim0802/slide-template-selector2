@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TemplateCreator.css';
 
 function TemplateCreator({ onCreate }) {
   const [templateName, setTemplateName] = useState('');
@@ -13,16 +14,20 @@ function TemplateCreator({ onCreate }) {
   };
 
   return (
-    <div>
-      <select onChange={(e) => setTemplateName(e.target.value)} value={templateName}>
-        <option value="">ì í</option>
-        <option value="ê¸°ë³¸ ííë¦¿">ê¸°ë³¸ ííë¦¿</option>
-        <option value="ê°ì">ê°ì</option>
-        <option value="ëª©ì°¨">ëª©ì°¨</option>
-        <option value="ìì½ ì¥í">ìì½ ì¥í</option>
-        <option value="ë©ì¸ ì¥í">ë©ì¸ ì¥í</option>
+    <div className="template-creator">
+      <select 
+        className="template-select" 
+        onChange={(e) => setTemplateName(e.target.value)} 
+        value={templateName}
+      >
+        <option value="">선택</option>
+        <option value="기본 템플릿">기본 템플릿</option>
+        <option value="개요">개요</option>
+        <option value="목차">목차</option>
+        <option value="요약 장표">요약 장표</option>
+        <option value="메인 장표">메인 장표</option>
       </select>
-      <button onClick={handleCreate}>ìì±</button>
+      <button className="create-button" onClick={handleCreate}>생성</button>
     </div>
   );
 }

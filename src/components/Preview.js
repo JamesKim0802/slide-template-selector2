@@ -1,11 +1,12 @@
 import React from 'react';
+import './Preview.css';
 
-const Preview = ({ template }) => {
+function Preview({ template }) {
   return (
-    <div>
-      <img src={template.file} alt="Selected Template" />
+    <div className="preview">
+      <img src={template.file} alt={template.name} className="preview-image" />
     </div>
   );
-};
+}
 
 export default Preview;

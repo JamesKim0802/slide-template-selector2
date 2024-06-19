@@ -1,0 +1,6 @@
+[
+    { "name": "Template1", "file": "/templates/VM/Template3.gif" },
+    { "name": "Template2", "file": "/templates/VM/Template4.gif" },
+    { "name": "Template3", "file": "/templates/VM/Template5.gif" },
+    { "name": "Template3", "file": "/templates/VM/Template6.gif" }
+  ]
