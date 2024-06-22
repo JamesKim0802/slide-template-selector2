@@ -1,5 +1,12 @@
 [
-    { "name": "Template1", "file": "/templates/New project/Template5.gif" },
-    { "name": "Template2", "file": "/templates/New project/Template6.gif" },
-    { "name": "Template3", "file": "/templates/New project/Template7.gif" }
-  ]
+  {
+    "id": 1,
+    "name": "Template 1",
+    "file": "Template1.gif"
+  },
+  {
+    "id": 2,
+    "name": "Template 2",
+    "file": "Template2.gif"
+  }
+]

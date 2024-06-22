@@ -1,14 +1,22 @@
 [
-    { "name": "Template1", "file": "/templates/Total/Template1.gif" },
-    { "name": "Template2", "file": "/templates/Total/Template2.gif" },
-    { "name": "Template3", "file": "/templates/Total/Template3.gif" },
-    { "name": "Template3", "file": "/templates/Total/Template4.gif" },
-    { "name": "Template1", "file": "/templates/Total/Template5.gif" },
-    { "name": "Template2", "file": "/templates/Total/Template6.gif" },
-    { "name": "Template3", "file": "/templates/Total/Template7.gif" },
-    { "name": "Template3", "file": "/templates/Total/Template8.gif" },
-    { "name": "Template1", "file": "/templates/Total/Template9.gif" },
-    { "name": "Template2", "file": "/templates/Total/Template10.gif" },
-    { "name": "Template3", "file": "/templates/Total/Template11.gif" },
-    { "name": "Template3", "file": "/templates/Total/Template12.gif" }
-  ]
+  {
+    "id": 1,
+    "name": "Template 1",
+    "file": "Template1.gif"
+  },
+  {
+    "id": 2,
+    "name": "Template 2",
+    "file": "Template2.gif"
+  },
+  {
+    "id": 3,
+    "name": "Template 3",
+    "file": "Template3.gif"
+  },
+  {
+    "id": 4,
+    "name": "Template 4",
+    "file": "Template4.gif"
+  }
+]

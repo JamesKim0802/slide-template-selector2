@@ -1,6 +1,42 @@
 [
-    { "name": "Template1", "file": "/templates/Overhaul/Template1.gif" },
-    { "name": "Template2", "file": "/templates/Overhaul/Template2.gif" },
-    { "name": "Template3", "file": "/templates/Overhaul/Template3.gif" },
-    { "name": "Template3", "file": "/templates/Overhaul/Template4.gif" }
-  ]
+  {
+    "id": 1,
+    "name": "Template 1",
+    "file": "Template1.gif"
+  },
+  {
+    "id": 2,
+    "name": "Template 2",
+    "file": "Template2.gif"
+  },
+  {
+    "id": 3,
+    "name": "Template 3",
+    "file": "Template3.gif"
+  },
+  {
+    "id": 4,
+    "name": "Template 4",
+    "file": "Template4.gif"
+  },
+  {
+    "id": 5,
+    "name": "Template 5",
+    "file": "Template5.gif"
+  },
+  {
+    "id": 6,
+    "name": "Template 6",
+    "file": "Template6.gif"
+  },
+  {
+    "id": 7,
+    "name": "Template 7",
+    "file": "Template7.gif"
+  },
+  {
+    "id": 8,
+    "name": "Template 8",
+    "file": "Template8.gif"
+  }
+]

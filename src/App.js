@@ -15,9 +15,13 @@ function App() {
   const [isToolbarVisible, setIsToolbarVisible] = useState(true);
 
   useEffect(() => {
-    fetch(`/templates/${selectedCategory.toLowerCase()}/templates.json`)
+    fetch(`/templates/${selectedCategory}/templates.json`)
       .then(response => response.json())
-      .then(data => setTemplates(data))
+      .then(data => {
+        console.log('Fetched templates:', data);
+        setTemplates(data);
+        setSelectedTemplate(null); // 카테고리 변경 시 미리보기 이미지 초기화
+      })
       .catch(error => console.error('Error fetching templates:', error));
   }, [selectedCategory]);
 
@@ -27,6 +31,7 @@ function App() {
 
   const handleTemplateSelect = (template) => {
     setSelectedTemplate(template);
+    console.log('Selected template:', template); // 로그 추가
   };
 
   const handleCreateTemplate = (newTemplate) => {
@@ -64,9 +69,10 @@ function App() {
       const newWhiteButtons = [...whiteButtons];
       const emptyIndex = newWhiteButtons.findIndex(button => button === null);
       if (emptyIndex !== -1) {
-        newWhiteButtons[emptyIndex] = selectedTemplate.file;
+        newWhiteButtons[emptyIndex] = `/templates/${selectedCategory}/${selectedTemplate.file}`;
         setWhiteButtons(newWhiteButtons);
-        setSelectedTemplate(null); // Clear the preview box
+        setSelectedTemplate(null); // 미리 보기 이미지를 지움
+        console.log('Selected template for white buttons:', newWhiteButtons[emptyIndex]); // 로그 추가
       }
     }
   };
@@ -109,7 +115,8 @@ function App() {
               {templates.map((template, index) => (
                 <div key={index} className="template-button">
                   <div className="template-image-container">
-                    <img src={template.file} alt={template.name} />
+                    {console.log('Image path:', `/templates/${selectedCategory}/${template.file}`)}
+                    <img src={`/templates/${selectedCategory}/${template.file}`} alt={template.name} />
                   </div>
                   <button className="like-button" onClick={() => handleTemplateSelect(template)}>
                     Select
@@ -161,7 +168,7 @@ function App() {
           <div className="solid-line"></div>
           <button className="preview-button">preview</button>
           <div className="preview-box">
-            {selectedTemplate && <Preview template={selectedTemplate} />}
+            {selectedTemplate && <Preview template={{...selectedTemplate, file: `${selectedCategory}/${selectedTemplate.file}`}} />}
           </div>
           <button className="select-button" onClick={handleSelect}>select</button>
           <div className="dotted-line"></div>
